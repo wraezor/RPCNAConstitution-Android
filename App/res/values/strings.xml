@@ -2,4 +2,16 @@
 
     <string name="app_name">RPCNA Constitution</string>
 
+    <string-array name="RPC_menu_items">
+        <item>West. Confession &amp; RP Testimony</item>
+        <item>Larger Catechism</item>
+        <item>Shorter Catechism</item>
+        <item>Directory for Church Government</item>
+        <item>Book of Discipline</item>
+        <item>Directory of Public Worship</item>
+        <item>Vows</item>
+        <item>Suggested Forms</item>
+        <item>History of the Standards</item>
+        <item>Covenant of 1871</item>
+    </string-array>
 </resources>
