@@ -1,4 +1,7 @@
 # Compiled Package
 ##################
-*.apk
-
+App/bin/*.apk
+App/bin/classes/**
+App/bin/classes.dex
+App/bin/resources.ap_
+App/gen/**

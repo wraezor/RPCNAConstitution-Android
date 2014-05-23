@@ -5,11 +5,13 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     private String[] mMenuStringItems;
@@ -18,6 +20,7 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    private TextView mBodyTextView;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class MainActivity extends Activity {
         mMenuStringItems = getResources().getStringArray(R.array.RPC_menu_items);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.menu_drawer);
+        mBodyTextView = (TextView) findViewById(R.id.body_text);
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -64,20 +68,10 @@ public class MainActivity extends Activity {
 	
 	
 	private void selectItem(int position) {
-//	    // Create a new fragment and specify the planet to show based on position
-//	    Fragment fragment = new PlanetFragment();
-//	    Bundle args = new Bundle();
-//	    args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-//	    fragment.setArguments(args);
-//
-//	    // Insert the fragment by replacing any existing fragment
-//	    FragmentManager fragmentManager = getFragmentManager();
-//	    fragmentManager.beginTransaction()
-//	                   .replace(R.id.content_frame, fragment)
-//	                   .commit();
-//
-//	    // Highlight the selected item, update the title, and close the drawer
-	    mDrawerList.setItemChecked(position, true);
+		
+	    String documentText = getResources().getStringArray(R.array.RPC_documents)[position];	    
+		mBodyTextView.setText(Html.fromHtml(documentText));
+		mDrawerList.setItemChecked(position, true);
 	    setTitle(mMenuStringItems[position]);
 	    mDrawerLayout.closeDrawer(mDrawerList);
 	}
@@ -118,6 +112,5 @@ public class MainActivity extends Activity {
         // Handle your other action bar items...
 
         return super.onOptionsItemSelected(item);
-    }
-
+    }    
 }
